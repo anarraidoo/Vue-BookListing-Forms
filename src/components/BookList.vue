@@ -6,7 +6,7 @@
       <book-item v-for='book in searchedBooks' :key='book.id' :book='book'></book-item>
     </ul>
     <hr>
-    <button class="ui button toggle" @toggle="changeFilterType">{{filterType ? 'Ownership' : 'Book State'}}</button>
+    <button @toggle='changeFilterType'>{{filterType ? 'Ownership' : 'Book State'}}</button>
     <span v-if="filterType">
       <h2>Filtered Books By Ownership</h2>
       <select v-model="holding">
