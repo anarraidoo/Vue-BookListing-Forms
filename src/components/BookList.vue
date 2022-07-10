@@ -31,8 +31,10 @@ export default {
       states: ["Want to Read", "Read", "Reading"],
       books: [
         { title: "Dom Juan", author: "Molière", finishedReading: true, ownership: "bought" },
-        { title: "La ballade de Sammy Song", author: "Marie-Agnès Vermande-Lhern", finishedReading: true, ownership: "borrowed"  },
-        { title: "Amusing Ourselves to Death", author: "Neil Postman", finishedReading: true, ownership: "borrowed"  }
+        { title: "La Ballade de Sammy Song", author: "Marie-Agnès Vermande-Lhern", finishedReading: true, ownership: "borrowed"  },
+        { title: "The Bridgertons Happily Ever After", author: "Julia Quinn", finishedReading: false, ownership: "bought"  },
+        { title: "(You) Set Me on Fire", author: "Mariko Tamaki", finishedReading: false, ownership: "bought"  },
+        { title: "Le Vrai Monde?", author: "Michel Tremblay", finishedReading: true, ownership: "bought"  }
       ],
       filters: ["bought", "borrowed"],
       holding: "bought",
