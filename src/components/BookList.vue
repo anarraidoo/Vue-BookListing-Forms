@@ -6,7 +6,7 @@
       <book-item v-for='book in searchedBooks' :key='book.id' :book='book'></book-item>
     </ul>
     <hr>
-    <button class="ui button toggle" @click="toggle">OFF</button>
+    <button class="ui button toggle" @click="toggle">{{filterSelected ? 'Ownership' : 'States'}}</button>
     <span v-if="filterSelected">
       <h2>Filtered Books By Ownership</h2>
       <select v-model="holding">
@@ -77,7 +77,7 @@ export default {
                         ownership: bookData.ownership });
     },
     toggle() {
-      this.filterSelected = !filterSelected;
+      this.filterSelected = !this.filterSelected;
     }
   }
 };
