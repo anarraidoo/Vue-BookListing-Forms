@@ -76,7 +76,7 @@ export default {
       this.books.push({ title: bookData.bookTitle, author: bookData.bookAuthor, finishedReading: bookData.finishedReading,
                         ownership: bookData.ownership });
     },
-    selectFilter {
+    selectFilter() {
       this.filterSelected = !filterSelected;
     }
   }
