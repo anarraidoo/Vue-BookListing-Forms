@@ -31,9 +31,6 @@ export default {
     };
   },
   methods: {
-    filterSubmit() {
-      this.$emit("click")
-    },
     bookSubmit(bookData) {
       this.$emit("addBook", bookData)
     }
