@@ -39,7 +39,7 @@ export default {
   name: "BookList",
   data() {
     return {
-      title: "All Books",
+      title: "My Book Library",
       states: ["Want to Read", "Read", "Reading"],
       books: [
         { title: "Dom Juan", author: "Molière", finishedReading: "read", ownership: "bought" },
