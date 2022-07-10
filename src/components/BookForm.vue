@@ -1,4 +1,8 @@
 <template>
+  <form v-on:submit.prevent="filterSubmit()" class="" action="#" method="post">
+    <button type="submit" name="filterButton">Ownership</button>
+  </form>
+
   <form v-on:submit.prevent="bookSubmit(bookData)" class="" action="#" method="post">
     <input v-model=bookData.bookTitle type="text" name="title" value="" placeholder="Book Title">
     <input v-model=bookData.bookAuthor type="text" name="author" value="" placeholder="Book Author">
@@ -31,6 +35,9 @@ export default {
     };
   },
   methods: {
+    filterSubmit() {
+    
+    }
     bookSubmit(bookData) {
       this.$emit("addBook", bookData)
     }
