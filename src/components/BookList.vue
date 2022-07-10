@@ -6,8 +6,8 @@
       <book-item v-for='book in searchedBooks' :key='book.id' :book='book'></book-item>
     </ul>
     <hr>
-    <button class="ui button toggle" @click="toggle">{{filterSelected ? 'Ownership' : 'States'}}</button>
-    <span v-if="filterSelected">
+    <button class="ui button toggle" @toggle="changeFilterType">{{filterType ? 'Ownership' : 'Book State'}}</button>
+    <span v-if="filterType">
       <h2>Filtered Books By Ownership</h2>
       <select v-model="holding">
         <option v-for="filter in ownershipFilters">{{ filter }}</option>
@@ -17,9 +17,9 @@
       </ul>
     </span>
     <span v-else>
-      <h2>Filtered Books By States</h2>
+      <h2>Filtered Books By Book State</h2>
       <select v-model="holding">
-        <option v-for="filter in ownershipFilters">{{ filter }}</option>
+        <option v-for="filter in statesFilters">{{ filter }}</option>
       </select>
       <ul>
         <book-item v-for='book in filteredBooks' :key='book.id' :book='book'></book-item>
@@ -52,7 +52,7 @@ export default {
       ownershipFilters: ["bought", "borrowed"],
       statesFilters: ["read", "not read", "want to Read", "reading"],
       holding: "bought",
-      filterSelected: true,
+      filterType: true,
       searchInput: ""
     };
   },
@@ -76,8 +76,8 @@ export default {
       this.books.push({ title: bookData.bookTitle, author: bookData.bookAuthor, finishedReading: bookData.finishedReading,
                         ownership: bookData.ownership });
     },
-    toggle() {
-      this.filterSelected = !this.filterSelected;
+    changeFilterType() {
+      this.filterType = !this.filterType;
     }
   }
 };
