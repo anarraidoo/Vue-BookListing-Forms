@@ -4,6 +4,8 @@
     <span v-if="book.finishedReading === 'read'">Read</span>
     <span v-else-if="book.finishedReading === 'reading'">Reading</span>
     <span v-else>Not Read</span>
+
+    <span v-if="book.liked" style="color:red">❤</span>
   </li>
 </template>
 

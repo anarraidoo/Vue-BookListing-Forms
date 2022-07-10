@@ -6,7 +6,7 @@
       <book-item v-for='book in searchedBooks' :key='book.id' :book='book'></book-item>
     </ul>
     <hr>
-    <button class="ui button toggle" @click='changeFilterType'>{{filterType ? 'Ownership' : 'Book State'}}</button>
+    <button class="ui button toggle" @click='changeFilterType'>{{filterType ? 'Book State' : 'Ownership'}}</button>
     <span v-if="filterType">
       <h2>Filtered Books By Ownership</h2>
       <select v-model="holding">
@@ -40,14 +40,14 @@ export default {
   data() {
     return {
       title: "My Book Library",
-      states: ["Want to Read", "Read", "Reading"],
       books: [
-        { title: "Dom Juan", author: "Molière", finishedReading: "read", ownership: "bought" },
-        { title: "La Ballade de Sammy Song", author: "Marie-Agnès Vermande-Lhern", finishedReading: "read", ownership: "borrowed"  },
-        { title: "The Bridgertons Happily Ever After", author: "Julia Quinn", finishedReading: "not read", ownership: "bought"  },
-        { title: "(You) Set Me on Fire", author: "Mariko Tamaki", finishedReading: "reading", ownership: "bought"  },
-        { title: "Le Vrai Monde?", author: "Michel Tremblay", finishedReading: "read", ownership: "bought"  },
-        { title: "Burry Me Deep", author: "Christopher Pike", finishedReading: "read", ownership: "borrowed"  }
+        { title: "Dom Juan", author: "Molière", finishedReading: "read", ownership: "bought", liked: true },
+        { title: "La Ballade de Sammy Song", author: "Marie-Agnès Vermande-Lhern", finishedReading: "read", ownership: "borrowed", liked: true },
+        { title: "The Bridgertons Happily Ever After", author: "Julia Quinn", finishedReading: "not read", ownership: "bought", liked: false },
+        { title: "(You) Set Me on Fire", author: "Mariko Tamaki", finishedReading: "reading", ownership: "bought", liked: false },
+        { title: "Le Vrai Monde?", author: "Michel Tremblay", finishedReading: "read", ownership: "bought", liked: true },
+        { title: "Burry Me Deep", author: "Christopher Pike", finishedReading: "read", ownership: "borrowed", liked: true },
+        { title: "Who Made Me a Princess", author: "Plutus", finishedReading: "read", ownership: "borrowed", liked: false }
       ],
       ownershipFilters: ["bought", "borrowed"],
       statesFilters: ["read", "not read", "reading"],
@@ -79,7 +79,7 @@ export default {
   methods: {
     appendBook(bookData) {
       this.books.push({ title: bookData.bookTitle, author: bookData.bookAuthor, finishedReading: bookData.finishedReading,
-                        ownership: bookData.ownership });
+                        ownership: bookData.ownership, liked: bookData.liked });
     },
     changeFilterType() {
       this.filterType = !this.filterType;

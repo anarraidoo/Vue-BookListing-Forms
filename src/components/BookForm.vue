@@ -1,10 +1,18 @@
 <template>
-  <form v-on:submit.prevent="bookSubmit(bookData)" class="" action="#" method="post">
+  <form ref="bookform" v-on:submit.prevent="bookSubmit(bookData)" class="" action="#" method="post">
     <input v-model=bookData.bookTitle type="text" name="title" value="" placeholder="Book Title">
     <input v-model=bookData.bookAuthor type="text" name="author" value="" placeholder="Book Author">
     <div>
-      <input v-model=bookData.finishedReading type="checkbox" name="finishedReading">
-      <label for="finishedReading">Finished Reading</label>
+      <input v-model=bookData.finishedReading type="radio" value="read" name="read">
+      <label for="read">Read</label>
+      <div v-if="bookData.finishedReading === 'read'">
+        <input v-model=bookData.liked type="checkbox" name="liked">
+        <label for="liked">Liked the book</label>
+      </div>
+      <input v-model=bookData.finishedReading type="radio" value="not read" name="notread">
+      <label for="notread">Not Read</label>
+      <input v-model=bookData.finishedReading type="radio" value="reading" name="reading">
+      <label for="reading">Reading</label>
     </div>
     <div>
       <input v-model=bookData.ownership type="radio" value="borrowed" name="borrowed">
@@ -26,13 +34,15 @@ export default {
         bookTitle: "",
         bookAuthor: "",
         finishedReading: "",
+        liked: false,
         ownership: []
         }
     };
   },
   methods: {
     bookSubmit(bookData) {
-      this.$emit("addBook", bookData)
+      this.$emit("addBook", bookData);
+      Object.keys(bookData).forEach(v => bookData[v] = "");
     }
   }
 };
