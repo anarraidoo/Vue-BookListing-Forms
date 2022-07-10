@@ -6,8 +6,8 @@
       <book-item v-for='book in searchedBooks' :key='book.id' :book='book'></book-item>
     </ul>
     <hr>
-    <button @toggle='changeFilterType'>{{filterType ? 'Ownership' : 'Book State'}}</button>
-    <span v-if="filterType">
+    <button class="ui button toggle" @click="toggle">{{filterSelected ? 'Ownership' : 'Book State'}}</button>
+    <span v-if="filterSelected">
       <h2>Filtered Books By Ownership</h2>
       <select v-model="holding">
         <option v-for="filter in ownershipFilters">{{ filter }}</option>
@@ -19,7 +19,7 @@
     <span v-else>
       <h2>Filtered Books By Book State</h2>
       <select v-model="holding">
-        <option v-for="filter in statesFilters">{{ filter }}</option>
+        <option v-for="filter in ownershipFilters">{{ filter }}</option>
       </select>
       <ul>
         <book-item v-for='book in filteredBooks' :key='book.id' :book='book'></book-item>
@@ -76,8 +76,13 @@ export default {
       this.books.push({ title: bookData.bookTitle, author: bookData.bookAuthor, finishedReading: bookData.finishedReading,
                         ownership: bookData.ownership });
     },
+<<<<<<< HEAD
     changeFilterType() {
       this.filterType = !this.filterType;
+=======
+    toggle() {
+      this.filterSelected = !filterSelected;
+>>>>>>> parent of f008d24 (Update BookList.vue)
     }
   }
 };

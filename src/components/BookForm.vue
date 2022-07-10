@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     filterSubmit() {
-      this.$emit("toggle")
+      this.$emit("click")
     },
     bookSubmit(bookData) {
       this.$emit("addBook", bookData)
