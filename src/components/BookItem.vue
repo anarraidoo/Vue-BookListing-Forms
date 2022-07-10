@@ -1,6 +1,8 @@
 <template>
   <li>
     {{book.title}} : {{book.author}}
+    <span v-if="book.finishedReading == true">Read</span>
+    <span v-else="book.finishedReading == false">Not Read</span>
   </li>
 </template>
 
