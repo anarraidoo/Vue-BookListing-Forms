@@ -19,7 +19,7 @@
     <span v-else>
       <h2>Filtered Books By Book State</h2>
       <select v-model="status">
-        <option v-for="filter in statesFilters">{{ filter }}</option>
+        <option v-for="filter in ownershipFilters">{{ filter }}</option>
       </select>
       <ul>
         <book-item v-for='book in filteredBooks' :key='book.id' :book='book'></book-item>
