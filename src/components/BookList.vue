@@ -8,7 +8,7 @@
     <hr>
     <h2>Filtered Books By Ownership</h2>
     <select v-model="holding">
-      <option v-for="filter in filters">{{ filter }}</option>
+      <option v-for="filter in ownershipFilters">{{ filter }}</option>
     </select>
     <ul>
       <book-item v-for='book in filteredBooks' :key='book.id' :book='book'></book-item>
@@ -36,7 +36,8 @@ export default {
         { title: "(You) Set Me on Fire", author: "Mariko Tamaki", finishedReading: false, ownership: "bought"  },
         { title: "Le Vrai Monde?", author: "Michel Tremblay", finishedReading: true, ownership: "bought"  }
       ],
-      filters: ["bought", "borrowed"],
+      ownershipFilters: ["bought", "borrowed"],
+      statesFilters: ["read", "not read", "want to Read", "reading"],
       holding: "bought",
       searchInput: ""
     };
