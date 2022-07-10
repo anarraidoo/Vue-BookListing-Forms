@@ -33,7 +33,7 @@ export default {
   methods: {
     filterSubmit() {
 
-    }
+    },
     bookSubmit(bookData) {
       this.$emit("addBook", bookData)
     }
