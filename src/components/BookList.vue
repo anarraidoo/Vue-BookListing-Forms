@@ -18,7 +18,7 @@
     </span>
     <span v-else>
       <h2>Filtered Books By Book State</h2>
-      <select v-model="holding">
+      <select v-model="status">
         <option v-for="filter in statesFilters">{{ filter }}</option>
       </select>
       <ul>
@@ -42,23 +42,28 @@ export default {
       title: "All Books",
       states: ["Want to Read", "Read", "Reading"],
       books: [
-        { title: "Dom Juan", author: "Molière", finishedReading: true, ownership: "bought" },
-        { title: "La Ballade de Sammy Song", author: "Marie-Agnès Vermande-Lhern", finishedReading: true, ownership: "borrowed"  },
-        { title: "The Bridgertons Happily Ever After", author: "Julia Quinn", finishedReading: false, ownership: "bought"  },
-        { title: "(You) Set Me on Fire", author: "Mariko Tamaki", finishedReading: false, ownership: "bought"  },
-        { title: "Le Vrai Monde?", author: "Michel Tremblay", finishedReading: true, ownership: "bought"  },
-        { title: "Burry Me Deep", author: "Christopher Pike", finishedReading: true, ownership: "borrowed"  }
+        { title: "Dom Juan", author: "Molière", finishedReading: "read", ownership: "bought" },
+        { title: "La Ballade de Sammy Song", author: "Marie-Agnès Vermande-Lhern", finishedReading: "read", ownership: "borrowed"  },
+        { title: "The Bridgertons Happily Ever After", author: "Julia Quinn", finishedReading: "not read", ownership: "bought"  },
+        { title: "(You) Set Me on Fire", author: "Mariko Tamaki", finishedReading: "reading", ownership: "bought"  },
+        { title: "Le Vrai Monde?", author: "Michel Tremblay", finishedReading: "read", ownership: "bought"  },
+        { title: "Burry Me Deep", author: "Christopher Pike", finishedReading: "read", ownership: "borrowed"  }
       ],
       ownershipFilters: ["bought", "borrowed"],
-      statesFilters: ["read", "not read", "want to Read", "reading"],
+      statesFilters: ["read", "not read", "reading"],
       holding: "bought",
+      status: "read",
       filterType: true,
       searchInput: ""
     };
   },
   computed: {
     filteredBooks() {
-      return _.filter(this.books, ["ownership", this.holding]);
+      if (this.filterType) {
+        return _.filter(this.books, ["ownership", this.holding]);
+      } else {
+        return _.filter(this.books, ["finishedReading", this.holding]);
+      }
     },
     searchedBooks() {
       const searchFilter = book => {
