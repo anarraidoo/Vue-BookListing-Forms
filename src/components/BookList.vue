@@ -6,7 +6,7 @@
       <book-item v-for='book in searchedBooks' :key='book.id' :book='book'></book-item>
     </ul>
     <hr>
-    <book-form @filterButton='filterSubmit'></book-form>
+    <button class="ui button toggle" @click="toggle">OFF</button>
     <span v-if="filterSelected">
       <h2>Filtered Books By Ownership</h2>
       <select v-model="holding">
@@ -76,7 +76,7 @@ export default {
       this.books.push({ title: bookData.bookTitle, author: bookData.bookAuthor, finishedReading: bookData.finishedReading,
                         ownership: bookData.ownership });
     },
-    selectFilter() {
+    toggle() {
       this.filterSelected = !filterSelected;
     }
   }
